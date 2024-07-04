@@ -30,7 +30,7 @@ Here's how you can modify your client-side code to accommodate these changes:
 
 Add a players object to store other connected players:
 
-javascriptCopyclass MainScene extends Scene3D {
+class MainScene extends Scene3D {
   constructor() {
     super('MainScene')
     this.players = {}
@@ -40,7 +40,7 @@ javascriptCopyclass MainScene extends Scene3D {
 
 Add methods to add and remove other players:
 
-javascriptCopyclass MainScene extends Scene3D {
+class MainScene extends Scene3D {
   // ...
 
   async addPlayer(username, position) {
@@ -72,7 +72,7 @@ javascriptCopyclass MainScene extends Scene3D {
 
 Listen for socket events for player joins and leaves:
 
-javascriptCopysocket.on('playerJoined', ({ username, position }) => {
+socket.on('playerJoined', ({ username, position }) => {
   if (mainScene) {
     mainScene.addPlayer(username, position)
   }
@@ -94,7 +94,7 @@ socket.on('currentPlayers', (players) => {
 
 Modify the startGame function to pass the scene instance:
 
-javascriptCopylet mainScene
+let mainScene
 
 function startGame() {
   PhysicsLoader('/lib/ammo/kripken', () => {
@@ -110,7 +110,7 @@ function startGame() {
 
 Update player positions regularly:
 
-javascriptCopyclass MainScene extends Scene3D {
+class MainScene extends Scene3D {
   // ...
 
   update(time, delta) {
